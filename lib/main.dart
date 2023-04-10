@@ -1,3 +1,4 @@
+import 'package:book_reading/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,11 +12,7 @@ class BookReadingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Book Reading App'),
-        ),
-      ),
+      home: SplashScreen(),
     );
   }
 }
