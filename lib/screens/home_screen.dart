@@ -1,6 +1,6 @@
+import 'package:book_reading/widgets/book_widget.dart';
+import 'package:book_reading/widgets/top_rated_book.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,7 +8,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 242, 231, 235),
       body: Stack(
+        clipBehavior: Clip.none,
         children: [
           const Align(
             alignment: Alignment(1.2, -1.1),
@@ -20,21 +22,64 @@ class HomeScreen extends StatelessWidget {
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.only(top: 30.0, left: 30.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.6,
-                    child: const Text(
-                      'What are you reading today?',
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      child: const Text(
+                        'What are you reading today?',
+                        style: TextStyle(
+                            fontSize: 32.0, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.314,
+                      width: double.infinity,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: const [
+                          BookWidget(),
+                          BookWidget(),
+                        ],
+                      ),
+                    ),
+                    const Text(
+                      'Best of the day',
                       style: TextStyle(
                           fontSize: 32.0, fontWeight: FontWeight.w600),
                     ),
-                  ),
-                ],
+                    TopRatedBook(),
+                    const Text(
+                      'Continue Reading.. ',
+                      style: TextStyle(
+                          fontSize: 32.0, fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 12.0),
+                    ListTile(
+                      tileColor: Colors.grey.withOpacity(0.3),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0)),
+                      title: const Text(
+                        'Book Raading Name',
+                        style: TextStyle(
+                            fontSize: 16.0, fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: const Text(
+                        'Some subtitle about book reading',
+                        style: TextStyle(fontSize: 14.0),
+                      ),
+                      trailing: Image.network(
+                        'https://images-platform.99static.com//WE9F54ATXej5u2LWshKJ4wlQ1-U=/192x192:1699x1699/fit-in/500x500/99designs-contests-attachments/118/118518/attachment_118518740',
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
