@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:book_reading/screens/book_chapters.dart';
 import 'package:flutter/material.dart';
 
 class BookWidget extends StatelessWidget {
@@ -48,21 +51,30 @@ class BookWidget extends StatelessWidget {
                         ),
                       ),
                       Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 12.0),
-                          decoration: const BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(15.0),
-                                  bottomRight: Radius.circular(15.0))),
-                          child: const Center(
-                              child: Text(
-                            'Read',
-                            style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400),
-                          )),
+                        child: GestureDetector(
+                          onTap: () {
+                            //TODO:
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => BookChapters()));
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            decoration: const BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15.0),
+                                    bottomRight: Radius.circular(15.0))),
+                            child: const Center(
+                                child: Text(
+                              'Read',
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400),
+                            )),
+                          ),
                         ),
                       ),
                     ],
