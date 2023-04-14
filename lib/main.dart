@@ -8,23 +8,23 @@ import 'models/book.dart';
 void main() {
   //
 
-  Book book = Book(
-      bookName: 'bookName',
-      bookAuthor: 'bookAuthor',
-      bookRatings: 5.0,
-      bookDetails: 'bookDetails',
-      bookCover: 'bookCover',
-      bookChapters: [
-        Chapter(
-            chapterName: 'chapterName',
-            chapterDetails: 'chapterDetails',
-            chapterNumber: 1,
-            pages: [
-              BookPage(pageNumber: 1, paragraphs: [
-                'Some paragrph',
-              ])
-            ])
-      ]);
+  // Book book = Book(
+  //     bookName: 'bookName',
+  //     bookAuthor: 'bookAuthor',
+  //     bookRatings: 5.0,
+  //     bookDetails: 'bookDetails',
+  //     bookCover: 'bookCover',
+  //     bookChapters: [
+  //       Chapter(
+  //           chapterName: 'chapterName',
+  //           chapterDetails: 'chapterDetails',
+  //           chapterNumber: 1,
+  //           pages: [
+  //             BookPage(pageNumber: 1, paragraphs: [
+  //               'Some paragrph',
+  //             ])
+  //           ])
+  //     ]);
 
   runApp(BookReadingApp());
 }

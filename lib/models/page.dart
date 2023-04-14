@@ -1,3 +1,5 @@
+import 'package:book_reading/models/book.dart';
+
 class BookPage {
   int pageNumber;
   List<String> paragraphs;
