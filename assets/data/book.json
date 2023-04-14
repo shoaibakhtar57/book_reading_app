@@ -1,0 +1,107 @@
+{
+    "books": {
+        "book1": {
+            "bookName": "Data Communication And Networking",
+            "bookAuthor": "Bherouz A.Forouzan",
+            "rating": 4.7,
+            "bookDetails": "It tell us about the TCPflP Protocol Suite Local Area Networks Business Data Communications",
+            "bookCover": "https://images-platform.99static.com//WE9F54ATXej5u2LWshKJ4wlQ1-U=/192x192:1699x1699/fit-in/500x500/99designs-contests-attachments/118/118518/attachment_118518740",
+            "chapters": [
+                {
+                    "chapterName": "Introduction",
+                    "chapterNumber": 1,
+                    "chapterDetails": "In This chapter we will discuss about all word. That what is all and it's meaning",
+                    "pages": [
+                        {
+                            "pageNumber": 1,
+                            "paragraphs":    [
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features"
+                            ]
+
+                        }
+                    ]
+                },
+                {
+                    "chapterName": "Basics",
+                    "chapterNumber": 2,
+                    "chapterDetails": "In This chapter we will discuss about all word. That what is all and it's meaning",
+                    "pages": [
+                        {
+                            "pageNumber": 2,
+                            "paragraphs":    [
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features"
+                            ]
+
+                        }
+                    ]
+                }
+
+            ]
+
+        },
+
+         "book2": {
+            "bookName": "Data Communication And Networking",
+            "bookAuthor": "Bherouz A.Forouzan",
+            "rating": 4.7,
+            "bookDetails": "It tell us about the TCPflP Protocol Suite Local Area Networks Business Data Communications",
+            "bookCover": "https://images-platform.99static.com//WE9F54ATXej5u2LWshKJ4wlQ1-U=/192x192:1699x1699/fit-in/500x500/99designs-contests-attachments/118/118518/attachment_118518740",
+            "chapters": [
+                {
+                    "chapterName": "Introduction",
+                    "chapterNumber": 1,
+                    "chapterDetails": "In This chapter we will discuss about all word. That what is all and it's meaning",
+                    "pages": [
+                        {
+                            "pageNumber": 1,
+                            "paragraphs":    [
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features"
+                            ]
+
+                        }
+                    ]
+                },
+                {
+                    "chapterName": "Basics",
+                    "chapterNumber": 2,
+                    "chapterDetails": "In This chapter we will discuss about all word. That what is all and it's meaning",
+                    "pages": [
+                        {
+                            "pageNumber": 2,
+                            "paragraphs":    [
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features",
+                                "Fast and full of New Features"
+                            ]
+
+                        }
+                    ]
+                }
+
+            ]
+
+        }
+    }
+}

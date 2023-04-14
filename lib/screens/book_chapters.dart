@@ -1,6 +1,7 @@
+import 'dart:developer';
+
+import 'package:book_reading/screens/reading.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class BookChapters extends StatelessWidget {
   const BookChapters({super.key});
@@ -14,7 +15,13 @@ class BookChapters extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height * 0.4,
             width: MediaQuery.of(context).size.width,
-            color: Colors.green,
+            decoration: BoxDecoration(
+              color: Colors.grey.withOpacity(0.7),
+              borderRadius: const BorderRadius.only(
+                bottomRight: Radius.circular(15.0),
+                bottomLeft: Radius.circular(15.0),
+              ),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -80,75 +87,30 @@ class BookChapters extends StatelessWidget {
               ],
             ),
           ),
-          // Center(
-          //   child: Expanded(
-          //     child:
 
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                tileColor: Colors.red,
-                title: Text('Some Chapter Name'),
-              ),
-            ],
-          ),
-          //   ),
-          // ),
-          // Stack(
-          //   children: [
-          //     Positioned(
-          //       top: 10,
-          //       right: 10,
-          //       child: ListTile(
-          //         shape: RoundedRectangleBorder(
-          //           borderRadius: BorderRadius.circular(25.0),
-          //         ),
-          //         tileColor: Colors.red,
-          //         title: Text('Some Chapter Name'),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-
-          // Column(
-          //   // mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     ListTile(
-          //       shape: RoundedRectangleBorder(
-          //         borderRadius: BorderRadius.circular(25.0),
-          //       ),
-          //       tileColor: Colors.red,
-          //       title: Text('Some Chapter Name'),
-          //     ),
-          //   ],
-          // )
-          // Align(
-          //   alignment: Alignment.bottomCenter,
-          //   child: Container(
-          //     height: MediaQuery.of(context).size.height * 0.63,
-          //     width: MediaQuery.of(context).size.width,
-          //     // color: Colors.amber,
-          //     child: Padding(
-          //       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-          //       child: Stack(
-          //         clipBehavior: Clip.none,
-          //         children: [
-          //           ListTile(
-          //             shape: RoundedRectangleBorder(
-          //               borderRadius: BorderRadius.circular(25.0),
-          //             ),
-          //             tileColor: Colors.red,
-          //             title: Text('Some Chapter Name'),
-          //           ),
-          //         ],
-          //       ),
-          //     ),
-          //   ),
-          // ),
+          //TODO: SOLUTION
+          Center(
+            child: Column(
+              children: [
+                SizedBox(height: MediaQuery.of(context).size.height * 0.35),
+                Expanded(
+                  child: Card(
+                    margin: const EdgeInsets.symmetric(horizontal: 12.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0)),
+                    child: ListTile(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => ReadingScreen()));
+                      },
+                      leading: Text('Chapter 1'),
+                      trailing: Icon(Icons.chevron_right),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
