@@ -1,9 +1,49 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:book_reading/models/book.dart';
 import 'package:book_reading/widgets/book_widget.dart';
 import 'package:book_reading/widgets/top_rated_book.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<Book> books = List.empty(growable: true);
+
+  //Top Rated Book
+  Book? topRatedBook;
+
+  Future<void> getBooks() async {
+    final booksMap = await rootBundle.loadString('assets/data/book.json');
+    final data = Map<String, dynamic>.from(jsonDecode(booksMap));
+    books = (data['books'] as Map<String, dynamic>)
+        .entries
+        .map((e) => Book.fromJson(e.value))
+        .toList();
+    getTopRatedBook();
+    log('BOOKS LENGHT:: ${books.length}');
+    setState(() {});
+  }
+
+  void getTopRatedBook() async {
+    final topBooks = [...books];
+    topBooks.sort((a, b) => b.bookRatings.compareTo(a.bookRatings));
+    topRatedBook = topBooks.first;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getBooks();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +77,17 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.314,
                       width: double.infinity,
-                      child: ListView(
+                      child: ListView.builder(
+                        itemCount: books.length,
                         scrollDirection: Axis.horizontal,
-                        children: const [
-                          BookWidget(),
-                          BookWidget(),
-                        ],
+                        itemBuilder: (context, index) {
+                          final indexItem = books[index];
+                          return BookWidget(
+                              bookName: indexItem.bookName,
+                              bookAuthor: indexItem.bookAuthor,
+                              bookCover: indexItem.bookCover,
+                              bookRatings: indexItem.bookRatings);
+                        },
                       ),
                     ),
                     const Text(
@@ -50,7 +95,14 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 32.0, fontWeight: FontWeight.w600),
                     ),
-                    TopRatedBook(),
+                    topRatedBook != null
+                        ? TopRatedBook(
+                            bookName: topRatedBook!.bookName,
+                            bookCover: topRatedBook!.bookCover,
+                            bookAuthor: topRatedBook!.bookAuthor,
+                            bookDetails: topRatedBook!.bookDetails,
+                            bookRatings: topRatedBook!.bookRatings)
+                        : const Text('No Top Rated Book Found'),
                     const Text(
                       'Continue Reading.. ',
                       style: TextStyle(

@@ -4,7 +4,17 @@ import 'package:book_reading/screens/book_chapters.dart';
 import 'package:flutter/material.dart';
 
 class BookWidget extends StatelessWidget {
-  const BookWidget({super.key});
+  const BookWidget(
+      {super.key,
+      required this.bookName,
+      required this.bookAuthor,
+      required this.bookCover,
+      required this.bookRatings});
+
+  final String bookCover;
+  final String bookAuthor;
+  final String bookName;
+  final double bookRatings;
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +38,14 @@ class BookWidget extends StatelessWidget {
                   children: [
                     //TODO: For book details
                     SizedBox(height: MediaQuery.of(context).size.height * 0.17),
-                    const Text(
-                      'Some Book Name',
-                      style: TextStyle(
+                    Text(
+                      bookName,
+                      style: const TextStyle(
                           fontSize: 21.0, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      'Author Name',
+                      bookAuthor,
                       style: TextStyle(
                           fontSize: 16.0,
                           color: Colors.black.withOpacity(0.4),
@@ -93,7 +104,8 @@ class BookWidget extends StatelessWidget {
               top: -15,
               left: 20.0,
               child: Image.network(
-                'https://images-platform.99static.com//WE9F54ATXej5u2LWshKJ4wlQ1-U=/192x192:1699x1699/fit-in/500x500/99designs-contests-attachments/118/118518/attachment_118518740',
+                bookCover,
+                // 'https://images-platform.99static.com//WE9F54ATXej5u2LWshKJ4wlQ1-U=/192x192:1699x1699/fit-in/500x500/99designs-contests-attachments/118/118518/attachment_118518740',
                 height: 100.0,
                 width: 70.0,
                 fit: BoxFit.cover,
@@ -117,12 +129,12 @@ class BookWidget extends StatelessWidget {
                           color: Colors.black.withOpacity(0.03),
                         ),
                         child: Column(
-                          children: const [
-                            Icon(
+                          children: [
+                            const Icon(
                               Icons.star,
                               color: Colors.amber,
                             ),
-                            Text('5.0')
+                            Text(bookRatings.toString())
                           ],
                         ),
                       )

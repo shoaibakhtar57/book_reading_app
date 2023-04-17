@@ -3,7 +3,7 @@
         "book1": {
             "bookName": "Data Communication And Networking",
             "bookAuthor": "Bherouz A.Forouzan",
-            "rating": 4.7,
+            "rating": 4.2,
             "bookDetails": "It tell us about the TCPflP Protocol Suite Local Area Networks Business Data Communications",
             "bookCover": "https://images-platform.99static.com//WE9F54ATXej5u2LWshKJ4wlQ1-U=/192x192:1699x1699/fit-in/500x500/99designs-contests-attachments/118/118518/attachment_118518740",
             "chapters": [
@@ -53,7 +53,7 @@
         },
 
          "book2": {
-            "bookName": "Data Communication And Networking",
+            "bookName": "Intro To Computing",
             "bookAuthor": "Bherouz A.Forouzan",
             "rating": 4.7,
             "bookDetails": "It tell us about the TCPflP Protocol Suite Local Area Networks Business Data Communications",

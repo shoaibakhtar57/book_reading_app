@@ -17,9 +17,7 @@ class Chapter {
       chapterName: json['chapterName'],
       chapterDetails: json['chapterDetails'],
       chapterNumber: json['chapterNumber'],
-      pages: json['pages'].map(
-        (e) => BookPage.fromJson(e),
-      ),
+      pages: List.from(json['pages']).map((e) => BookPage.fromJson(e)).toList(),
     );
   }
 }

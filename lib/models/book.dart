@@ -3,7 +3,7 @@ import 'package:book_reading/models/chapter.dart';
 class Book {
   String bookName;
   String bookAuthor;
-  double? bookRatings;
+  double bookRatings;
   String bookDetails;
   String bookCover;
   List<Chapter> bookChapters;
@@ -23,7 +23,8 @@ class Book {
       bookRatings: json['rating'],
       bookDetails: json['bookDetails'],
       bookCover: json['bookCover'],
-      bookChapters: json['chapters'].map((e) => Chapter.fromJson(e)),
+      bookChapters:
+          List.from(json['chapters']).map((e) => Chapter.fromJson(e)).toList(),
     );
   }
 }

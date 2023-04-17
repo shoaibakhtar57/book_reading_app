@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
 class TopRatedBook extends StatelessWidget {
-  const TopRatedBook({super.key});
+  const TopRatedBook(
+      {super.key,
+      required this.bookName,
+      required this.bookCover,
+      required this.bookAuthor,
+      required this.bookDetails,
+      required this.bookRatings});
+
+  final String bookName;
+  final String bookAuthor;
+  final String bookDetails;
+  final double bookRatings;
+  final String bookCover;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +37,14 @@ class TopRatedBook extends StatelessWidget {
                 const Text('New york times best seller book'),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
-                  child: const Text(
-                    'How to win friends and influence people',
-                    style:
-                        TextStyle(fontSize: 21.0, fontWeight: FontWeight.bold),
+                  child: Text(
+                    bookName,
+                    style: const TextStyle(
+                        fontSize: 21.0, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Text(
-                  'Author Name',
+                  bookAuthor,
                   style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.w600,
@@ -48,13 +60,15 @@ class TopRatedBook extends StatelessWidget {
                         color: Colors.black.withOpacity(0.03),
                       ),
                       child: Column(
-                        children: const [Icon(Icons.star), Text('5.0')],
+                        children: [
+                          const Icon(Icons.star),
+                          Text(bookRatings.toString())
+                        ],
                       ),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.4,
-                      child: const Text(
-                          'Some thing awesome text about this book Some thing awesome text'),
+                      child: Text(bookDetails),
                     ),
                   ],
                 ),
@@ -88,7 +102,8 @@ class TopRatedBook extends StatelessWidget {
             top: -25,
             right: 20.0,
             child: Image.network(
-              'https://images-platform.99static.com//WE9F54ATXej5u2LWshKJ4wlQ1-U=/192x192:1699x1699/fit-in/500x500/99designs-contests-attachments/118/118518/attachment_118518740',
+              bookCover,
+              // 'https://images-platform.99static.com//WE9F54ATXej5u2LWshKJ4wlQ1-U=/192x192:1699x1699/fit-in/500x500/99designs-contests-attachments/118/118518/attachment_118518740',
               height: 180.0,
               width: 120.0,
               fit: BoxFit.cover,

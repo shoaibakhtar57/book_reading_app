@@ -8,6 +8,7 @@ class BookPage {
 
   factory BookPage.fromJson(Map<String, dynamic> json) {
     return BookPage(
-        pageNumber: json['pageNumber'], paragraphs: json['paragraphs']);
+        pageNumber: json['pageNumber'],
+        paragraphs: List<String>.from(json['paragraphs']));
   }
 }
