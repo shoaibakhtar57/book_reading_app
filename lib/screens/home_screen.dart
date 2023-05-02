@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:book_reading/models/book.dart';
+import 'package:book_reading/screens/book_chapters.dart';
 import 'package:book_reading/widgets/book_widget.dart';
 import 'package:book_reading/widgets/top_rated_book.dart';
 import 'package:flutter/material.dart';
@@ -83,10 +84,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           final indexItem = books[index];
                           return BookWidget(
-                              bookName: indexItem.bookName,
-                              bookAuthor: indexItem.bookAuthor,
-                              bookCover: indexItem.bookCover,
-                              bookRatings: indexItem.bookRatings);
+                            bookName: indexItem.bookName,
+                            bookAuthor: indexItem.bookAuthor,
+                            bookCover: indexItem.bookCover,
+                            bookRatings: indexItem.bookRatings,
+                            bookDetails: indexItem.bookDetails,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => BookChapters(
+                                    bookChapterArgs:
+                                        BookChapterArgs(book: indexItem),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
                         },
                       ),
                     ),

@@ -3,8 +3,12 @@ import 'dart:developer';
 import 'package:book_reading/screens/reading.dart';
 import 'package:flutter/material.dart';
 
+import '../models/book.dart';
+
 class BookChapters extends StatelessWidget {
-  const BookChapters({super.key});
+  const BookChapters({super.key, required this.bookChapterArgs});
+
+  final BookChapterArgs bookChapterArgs;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +35,9 @@ class BookChapters extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.4,
-                      child: const Text(
-                        'Awesome Book Name',
-                        style: TextStyle(
+                      child: Text(
+                        bookChapterArgs.book.bookName,
+                        style: const TextStyle(
                             fontSize: 26.0, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -42,7 +46,7 @@ class BookChapters extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.45,
                           child: Text(
-                            'More data about this book More data about this book More data about this book More data about this book',
+                            bookChapterArgs.book.bookDetails,
                             style: TextStyle(
                               fontSize: 10.0,
                               color: Colors.black.withOpacity(0.8),
@@ -61,7 +65,11 @@ class BookChapters extends StatelessWidget {
                                 color: Colors.black.withOpacity(0.03),
                               ),
                               child: Column(
-                                children: const [Icon(Icons.star), Text('5.0')],
+                                children: [
+                                  const Icon(Icons.star),
+                                  Text(bookChapterArgs.book.bookRatings
+                                      .toString())
+                                ],
                               ),
                             )
                           ],
@@ -69,7 +77,7 @@ class BookChapters extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'Awesome Book Name',
+                      bookChapterArgs.book.bookAuthor,
                       style: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.w400,
@@ -79,7 +87,7 @@ class BookChapters extends StatelessWidget {
                   ],
                 ),
                 Image.network(
-                  'https://images-platform.99static.com//WE9F54ATXej5u2LWshKJ4wlQ1-U=/192x192:1699x1699/fit-in/500x500/99designs-contests-attachments/118/118518/attachment_118518740',
+                  bookChapterArgs.book.bookCover,
                   height: 150.0,
                   width: 100.0,
                   fit: BoxFit.cover,
@@ -94,18 +102,38 @@ class BookChapters extends StatelessWidget {
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.35),
                 Expanded(
-                  child: Card(
-                    margin: const EdgeInsets.symmetric(horizontal: 12.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0)),
-                    child: ListTile(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => ReadingScreen()));
-                      },
-                      leading: Text('Chapter 1'),
-                      trailing: Icon(Icons.chevron_right),
-                    ),
+                  child: ListView.separated(
+                    itemCount: bookChapterArgs.book.bookChapters.length,
+                    padding: const EdgeInsets.all(0.0),
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(height: 12.0);
+                    },
+                    itemBuilder: (context, index) {
+                      final indexItem =
+                          bookChapterArgs.book.bookChapters[index];
+                      return Card(
+                        margin: const EdgeInsets.symmetric(horizontal: 12.0),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25.0)),
+                        child: ListTile(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => ReadingScreen(
+                                  readingArgs: ReadingArgs(
+                                      bookPages: indexItem.pages,
+                                      chapterName: indexItem.chapterName),
+                                ),
+                              ),
+                            );
+                          },
+                          title: Text('Chapter ${index + 1}'),
+                          subtitle: Text(indexItem.chapterDetails),
+                          trailing: const Icon(Icons.chevron_right),
+                        ),
+                      );
+                    },
                   ),
                 )
               ],
@@ -115,4 +143,10 @@ class BookChapters extends StatelessWidget {
       ),
     );
   }
+}
+
+class BookChapterArgs {
+  Book book;
+
+  BookChapterArgs({required this.book});
 }
