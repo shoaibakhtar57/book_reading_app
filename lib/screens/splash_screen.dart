@@ -1,3 +1,4 @@
+import 'package:book_reading/app/routes.dart';
 import 'package:book_reading/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2)).then((value) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      Navigator.pushNamed(context, AppRoutes.homeScreen);
     });
   }
 
