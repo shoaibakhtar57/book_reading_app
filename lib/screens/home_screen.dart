@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:book_reading/app/routes.dart';
 import 'package:book_reading/models/book.dart';
 import 'package:book_reading/screens/book_chapters.dart';
 import 'package:book_reading/widgets/book_widget.dart';
@@ -90,15 +91,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             bookRatings: indexItem.bookRatings,
                             bookDetails: indexItem.bookDetails,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => BookChapters(
-                                    bookChapterArgs:
-                                        BookChapterArgs(book: indexItem),
-                                  ),
-                                ),
-                              );
+                              Navigator.pushNamed(
+                                  context, AppRoutes.chapterScreen,
+                                  arguments: BookChapterArgs(book: indexItem));
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (_) => BookChapters(
+                              //       bookChapterArgs:
+                              //           BookChapterArgs(book: indexItem),
+                              //     ),
+                              //   ),
+                              // );
                             },
                           );
                         },
